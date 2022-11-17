@@ -1,0 +1,50 @@
+<div class="container w-100">
+  <nav class="navbar navbar-expand-lg bg-light">
+    <div class="container-fluid">
+      <a class="navbar-brand" href="#">Navbar</a>
+      <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent"
+        aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+
+      <form class="d-flex" role="search">
+        <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search">
+        <button class="btn btn-outline-success" type="submit">Search</button>
+      </form>
+      <form class="container-fluid justify-content-start">
+        <button class="btn btn-outline-success me-2" type="button">Add Flat</button>
+
+      </form>
+    </div>
+
+  </nav>
+
+
+  <h1>All our flat</h1>
+  <p>all our <%= @flats.count %> flats</p>
+  <div class="d-flex">
+
+    <% @flats.each do |flat| %>
+    <div class="card " style="width: 18rem;">
+      <img class="card-img-top" src="..." alt="Card image cap">
+      <div class="card-body">
+        <h5 class="card-title"><%= flat.name %></h5>
+        <p class="card-text"><%= flat.description %></p>
+        <%= link_to "details", flat_path(flat)  %> <%= link_to "edit", edit_flat_path(flat)  %> <%= link_to "delete", flat_path(flat), data: {
+          turbo_method: :delete,
+          turbo_confirm: "Are you sure?"
+        }  %>
+
+
+
+
+      </div>
+
+    </div>
+    <% end  %>
+
+
+
+
+  </div>
+</div>
